@@ -35,7 +35,7 @@
                                         </td>
 
                                         <td>
-                                            <!-- TODO: View link -->
+                                            <a href="{{ url('/vacancy', $vacancy->id) }}">View</a>
                                         </td>
                                         <td>
                                             <!-- TODO: Delete Button -->

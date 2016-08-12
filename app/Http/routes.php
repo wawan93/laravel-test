@@ -23,9 +23,11 @@ Route::get('/', function() {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
+Route::get('/vacancy/{vacancy}', function(Vacancy $vacancy) {
+    return View::make('vacancy.view', [
+        'vacancy' => $vacancy
+    ]);
+});
 Route::get('/vacancy', 'VacancyController@all');
-Route::get('/vacancy/{vacancy}', 'VacancyController@view');
 Route::post('/vacancy', 'VacancyController@create');
 Route::delete('/vacancy/{vacancy}', 'VacancyController@destroy');
