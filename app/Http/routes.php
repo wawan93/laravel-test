@@ -11,10 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Vacancy;
+
+Route::get('/', function() {
+    $view = View::make('vacancy.list', [
+        'vacancies' => Vacancy::all()
+    ]);
+
+    return $view;
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/vacancy', 'VacancyController@all');
+Route::get('/vacancy/{vacancy}', 'VacancyController@view');
+Route::post('/vacancy', 'VacancyController@create');
+Route::delete('/vacancy/{vacancy}', 'VacancyController@destroy');
