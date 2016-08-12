@@ -15,7 +15,7 @@ use App\Vacancy;
 
 Route::get('/', function() {
     $view = View::make('vacancy.list', [
-        'vacancies' => Vacancy::all()
+        'vacancies' => Vacancy::where(['moderated'=>true])->get()
     ]);
 
     return $view;
