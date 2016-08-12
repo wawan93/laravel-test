@@ -47,6 +47,7 @@ class VacancyController extends Controller
 
     public function destroy(Request $request, Vacancy $vacancy)
     {
-
+        $vacancy->delete();
+        return redirect('/');
     }
 }

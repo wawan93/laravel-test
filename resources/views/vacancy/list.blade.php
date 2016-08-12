@@ -38,7 +38,12 @@
                                             <a href="{{ url('/vacancy', $vacancy->id) }}">View</a>
                                         </td>
                                         <td>
-                                            <!-- TODO: Delete Button -->
+                                            <form action="/vacancy/{{ $vacancy->id }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+
+                                                <button>Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
