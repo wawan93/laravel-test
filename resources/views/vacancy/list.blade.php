@@ -4,8 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-
-                @include('vacancy.form')
+                @if (!Auth::guest())
+                    @include('vacancy.form')
+                @endif
 
                 @if (count($vacancies) > 0)
                     <div class="panel panel-default">
