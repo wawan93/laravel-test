@@ -6,6 +6,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    const ROLE_GUEST = 0;
+    const ROLE_EMPLOYER = 1;
+    const ROLE_MODERATOR = 2;
+
     /**
      * The attributes that are mass assignable.
      *
