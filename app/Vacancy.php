@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vacancy extends Model
 {
-    protected $fillable = ['name', 'text', 'email'];
+    protected $fillable = ['name', 'text', 'email', 'moderated'];
 
     public function user()
     {

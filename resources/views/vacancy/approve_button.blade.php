@@ -1,11 +1,7 @@
 @if (null !== Auth::user() && Auth::user()->is_moderator())
-    <form action="/vacancy/approve/{{ $vacancy->id }}" method="POST">
+    <form action="/vacancy/{{ $vacancy->moderated ? 'disapprove' : 'approve' }}/{{ $vacancy->id }}" method="POST">
         {{ csrf_field() }}
 
-        @if ($vacancy->moderated)
-            <button>Disapprove</button>
-        @else
-            <button>Approve</button>
-        @endif
+            <button>{{ $vacancy->moderated ? 'Disapprove' : 'Approve' }}</button>
     </form>
 @endif

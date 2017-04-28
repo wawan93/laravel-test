@@ -53,7 +53,13 @@ class VacancyController extends Controller
 
     public function approve(Request $request, Vacancy $vacancy)
     {
-        $vacancy->update(['moderated' => !$vacancy->moderated]);
+        $vacancy->update(['moderated' => true]);
+        return redirect('/vacancy');
+    }
+
+    public function disapprove(Request $request, Vacancy $vacancy)
+    {
+        $vacancy->update(['moderated' => false]);
         return redirect('/vacancy');
     }
 }
