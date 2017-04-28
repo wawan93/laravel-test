@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vacancy::class);
     }
+
+    public function is_moderator()
+    {
+        return $this->role == self::ROLE_MODERATOR;
+    }
 }

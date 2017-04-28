@@ -12,5 +12,10 @@
                 <p>{{ $vacancy->email }}</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                @include('vacancy.approve_button')
+            </div>
+        </div>
     </div>
 @endsection

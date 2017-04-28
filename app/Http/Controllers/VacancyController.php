@@ -50,4 +50,10 @@ class VacancyController extends Controller
         $vacancy->delete();
         return redirect('/');
     }
+
+    public function approve(Request $request, Vacancy $vacancy)
+    {
+        $vacancy->update(['moderated' => !$vacancy->moderated]);
+        return redirect('/vacancy');
+    }
 }

@@ -30,4 +30,5 @@ Route::get('/vacancy/{vacancy}', function(Vacancy $vacancy) {
 });
 Route::get('/vacancy', 'VacancyController@all');
 Route::post('/vacancy', 'VacancyController@create');
+Route::post('/vacancy/approve/{vacancy}', 'VacancyController@approve');
 Route::delete('/vacancy/{vacancy}', 'VacancyController@destroy');
