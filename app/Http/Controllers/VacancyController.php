@@ -25,7 +25,6 @@ class VacancyController extends Controller
 
     public function create(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|max:255',
         ]);
@@ -47,7 +46,11 @@ class VacancyController extends Controller
 
     public function destroy(Request $request, Vacancy $vacancy)
     {
-        $vacancy->delete();
+        if ($vacancy->can_delete(\Auth::user())) {
+            $vacancy->delete();
+        } else {
+            return redirect('/')->withErrors("Only author or moderator can delete vacancy");
+        }
         return redirect('/');
     }
 
