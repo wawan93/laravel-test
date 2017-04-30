@@ -47,7 +47,10 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/vacancy') }}">Vacancies</a></li>
+                    <li><a href="{{ url('/vacancy') }}">My vacancies</a></li>
+                    @if (null !== Auth::user() && Auth::user()->is_moderator())
+                        <li><a href="{{ url('/vacancy/moderation') }}">Moderation</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->

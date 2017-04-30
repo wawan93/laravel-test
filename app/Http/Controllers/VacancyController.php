@@ -14,11 +14,22 @@ class VacancyController extends Controller
         $this->middleware('auth');
     }
 
-    public function all(Request $request)
+    public function my(Request $request)
     {
-        $vacancies = Vacancy::all();
+        $vacancies = Vacancy::where('user_id', \Auth::user()->id);
+
         $view = View::make('vacancy.list', [
-            'vacancies' => $vacancies
+            'vacancies' => $vacancies->get()
+        ]);
+        return $view;
+    }
+
+    public function moderation(Request $request)
+    {
+        $vacancies = Vacancy::where('moderated', 0);
+
+        $view = View::make('vacancy.list', [
+            'vacancies' => $vacancies->get()
         ]);
         return $view;
     }

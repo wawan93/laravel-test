@@ -23,12 +23,13 @@ Route::get('/', function() {
 
 Route::auth();
 
+Route::get('/vacancy/moderation', 'VacancyController@moderation');
 Route::get('/vacancy/{vacancy}', function(Vacancy $vacancy) {
     return View::make('vacancy.view', [
         'vacancy' => $vacancy
     ]);
 });
-Route::get('/vacancy', 'VacancyController@all');
+Route::get('/vacancy', 'VacancyController@my');
 Route::post('/vacancy', 'VacancyController@create');
 Route::post('/vacancy/approve/{vacancy}', 'VacancyController@approve');
 Route::post('/vacancy/disapprove/{vacancy}', 'VacancyController@disapprove');
