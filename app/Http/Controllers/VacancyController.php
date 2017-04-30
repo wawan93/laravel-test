@@ -16,7 +16,7 @@ class VacancyController extends Controller
 
     public function my(Request $request)
     {
-        $vacancies = Vacancy::where('user_id', \Auth::user()->id);
+        $vacancies = Vacancy::where('user_id', $request->user()->id);
 
         $view = View::make('vacancy.list', [
             'vacancies' => $vacancies->get()
@@ -63,7 +63,7 @@ class VacancyController extends Controller
 
     public function destroy(Request $request, Vacancy $vacancy)
     {
-        if ($vacancy->can_delete(\Auth::user())) {
+        if ($vacancy->can_delete($request->user())) {
             $vacancy->delete();
         } else {
             return redirect('/')->withErrors("Only author or moderator can delete vacancy");
