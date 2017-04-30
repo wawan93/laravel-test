@@ -40,11 +40,17 @@ class VacancyController extends Controller
             'name' => 'required|max:255',
         ]);
 
+        $moderated = $request->user()
+            ->vacancies()
+            ->where('moderated', 1)
+            ->count();
+        $isModerated = $moderated > 0;
+
         $request->user()->vacancies()->create([
             'name' => $request->name,
             'text' => $request->text,
             'email' => $request->user()->email,
-            'moderated' => false,
+            'moderated' => $isModerated,
         ]);
 
         return redirect('/vacancy');
