@@ -21,7 +21,7 @@ Route::get('/', function() {
     return $view;
 });
 
-Route::auth();
+Auth::routes();
 
 Route::get('/vacancy/moderation', 'VacancyController@moderation');
 Route::get('/vacancy/{vacancy}', function(Vacancy $vacancy) {
