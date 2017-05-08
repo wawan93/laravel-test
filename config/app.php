@@ -166,8 +166,6 @@ return [
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
